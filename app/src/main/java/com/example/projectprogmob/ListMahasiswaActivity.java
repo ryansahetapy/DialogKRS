@@ -1,23 +1,20 @@
 package com.example.projectprogmob;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class ListMahasiswaActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_mahasiswa);
 
-    }
-    public class listMahasiswaActivity extends AppCompatActivity {
-        String[] items ={"Harold", "Erick", "Aru", "Brian", "Ryan"};
+
+    public class ListMahasiswaActivity extends AppCompatActivity {
+        String[] items = {"Harold", "Erick", "Aru", "Brian", "Ryan"};
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +24,8 @@ public class ListMahasiswaActivity extends AppCompatActivity {
             ListView listView = findViewById(R.id.lvMhs);
             Spinner spinner = findViewById(R.id.mhsSpinner);
 
-            listView.setAdapter(new ArrayAdapter<String>(ListMahasiswaActivity.this, android.R.layout.simple_list_item_1,items));
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ListMahasiswaActivity.this, android.R.layout.simple_spinner_item,items);
+            listView.setAdapter(new ArrayAdapter<String>(ListMahasiswaActivity.this, android.R.layout.simple_list_item_1, items));
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ListMahasiswaActivity.this, android.R.layout.simple_spinner_item, items);
 
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(arrayAdapter);
@@ -36,7 +33,7 @@ public class ListMahasiswaActivity extends AppCompatActivity {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    Toast.makeText(ListMahasiswaActivity.this, "Anda memilih = " + items [i], Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListMahasiswaActivity.this, "Anda memilih = " + items[i], Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -48,14 +45,14 @@ public class ListMahasiswaActivity extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Toast.makeText(ListMahasiswaActivity.this, "Anda memilih = " +  items [i], Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ListMahasiswaActivity.this, "Anda memilih = " + items[i], Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
         public void GoToCreate(View view) {
             Intent intent = new Intent(ListMahasiswaActivity.this, CreateMhsActivity.class);
-            startActivity(Intent);
+            startActivity(intent);
         }
 
         public void GoToUpdate(View view) {
@@ -63,8 +60,6 @@ public class ListMahasiswaActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
-}
 
 
 
