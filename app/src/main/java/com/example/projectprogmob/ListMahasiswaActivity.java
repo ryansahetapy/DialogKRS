@@ -2,6 +2,8 @@ package com.example.projectprogmob;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,6 +60,50 @@ import androidx.appcompat.app.AppCompatActivity;
         public void GoToUpdate(View view) {
             Intent intent = new Intent(ListMahasiswaActivity.this, UpdateMhsActivity.class);
             startActivity(intent);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            if (item.getItemId() == R.id.proteintracker) {
+                Toast.makeText(getApplicationContext(), "ini menu pertama yang diklik", Toast.LENGTH_SHORT).show();
+            }
+            if (item.getItemId() == R.id.proteintracker) {
+                Toast.makeText(getApplicationContext(), "ini menu kedua yang diklik", Toast.LENGTH_SHORT).show();
+            }
+            if (item.getItemId() == R.id.proteintracker) {
+                Toast.makeText(getApplicationContext(), "ini menu ketiga yang diklik", Toast.LENGTH_SHORT).show();
+            }
+            return true;
+        }
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+            super.onCreateContextMenu(menu, v, menuInfo );
+            menu.setHeaderTitle("Silakan Pilih");
+            menu.add(0, v.getId(), 0, ("simpan"));
+            menu.add(0, v.getId(), 0,("Tidak"));
+        }
+        public boolean onContextItemSelected (MenuItem item) {
+            if (item.getTitle() == "Simpan") {
+                Toast.makeText(getApplicationContext(), "item disimpan ke DB", Toast.LENGTH_SHORT).show();
+            } else if (item.getTitle() == "Tidak") {
+                Toast.makeText(getApplicationContext(), "Tidak disimpan ke DB", Toast.LENGTH_SHORT).show();
+            } else {
+                return true;
+            }
+            return false;
+        }
+        @Override
+        protected void onCreateOptionsMenu(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_coba_menu);
+
+            String CountMenu[] = {"Ayam", "Bebek", "Kuda", "Kodok", "Ular"};
+            ListView lv = (ListView) findViewById(R.id.ListView1);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    this, android.R.layout.simple_list_item_1, CountMenu);
+            lv.setAdapter(adapter);
+            registerForContextMenu(lv);
+            }
         }
     }
 
