@@ -87,4 +87,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
+    <Button
+        android:id="@+id/btnSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Setting"
+        tools:layout_editor_absoluteX="294dp"
+        tools:layout_editor_absoluteY="317dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

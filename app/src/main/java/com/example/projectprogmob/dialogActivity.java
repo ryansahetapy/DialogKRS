@@ -1,6 +1,7 @@
 package com.example.projectprogmob;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,9 @@ public class dialogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button resetButton = (Button) findViewById(R.id.btnReset);
+
+        Button btnSetting =(Button)findViewById(R.id.btnSetting);
+        btnSetting.setOnClickListener(myBtnSettingClick);
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +43,12 @@ public class dialogActivity extends AppCompatActivity {
             }
         });
     }
+    private View.OnClickListener myBtnSettingClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(dialogActivity.this,SettingsActivity.class);
+        }
+    };
 }
 
 
